@@ -1,6 +1,6 @@
 {
   "name": "best-rust-patterns",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Production-grade Rust skills: actionbook/rust-skills enhanced with 34 source-cited patterns reverse-engineered from real Rust codebases.",
   "author": {
     "name": "LeventySeven",

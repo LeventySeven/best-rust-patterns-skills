@@ -1,6 +1,6 @@
 ---
 name: rust-deps-visualizer
-description: "Visualize Rust project dependencies as ASCII art. Triggers on: /deps-viz, dependency graph, show dependencies, visualize deps, 依赖图, 依赖可视化, 显示依赖"
+description: "Visualize AND analyze Rust project dependencies — ASCII tree plus duplicate-version and feature-unification diagnosis. Triggers on: /deps-viz, dependency graph, show dependencies, visualize deps, duplicate dependencies, cargo tree duplicates, feature unification, why is this crate pulled in, 依赖图, 依赖可视化, 显示依赖, 重复依赖"
 argument-hint: "[--depth N] [--features]"
 allowed-tools: ["Bash", "Read", "Glob"]
 ---
@@ -65,6 +65,35 @@ Use these box-drawing characters:
 - `├──` for middle items
 - `└──` for last items
 - `│   ` for continuation lines
+
+## Dependency Analysis (beyond the tree)
+
+`cargo tree` draws the graph; the high-value use is **diagnosing** it. Three checks worth running on any non-trivial project:
+
+**1. Duplicate versions** — the same crate compiled at two+ versions (slower builds, bigger binary, and confusing `expected X, found X` errors when a type leaks across the version boundary):
+
+```bash
+cargo tree -d            # --duplicates: lists every crate present at 2+ versions
+```
+
+**2. Who pulled it?** — invert the tree to find the dependency forcing an extra/old version:
+
+```bash
+cargo tree -i <crate>               # e.g. cargo tree -i hashbrown
+cargo tree -i <crate> -e features   # ...and which feature path reaches it
+```
+
+**3. Feature unification** — Cargo unions features across the whole graph, so one dependency (even a dev- or build-dependency) enabling a feature turns it on for *everyone*. Trace it:
+
+```bash
+cargo tree -e features              # annotate every edge with the features it activates
+cargo tree -e features -i <crate>   # why is <crate>'s feature X on? who switched it?
+```
+
+**Interpreting + fixing:**
+- Duplicates *across a major version* (`1.x` vs `2.x`) are expected — they need an upstream bump, not your action.
+- Duplicates *within a major* (`1.0.14` vs `1.0.21`) are usually fixable: unify the version in one place → see `m11-ecosystem` (the `[workspace.dependencies]` single-source-of-version pattern, and `[patch]` for a graph-wide override).
+- Surprise features in a release build usually trace to a dependency's default features → pin `default-features = false` and re-add only what you need.
 
 ## Visual Enhancements
 

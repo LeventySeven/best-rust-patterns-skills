@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 — 2026-06-07
+
+### Added
+- **rust-deps-visualizer** — new "Dependency Analysis (beyond the tree)" section: duplicate-version detection (`cargo tree -d`), inverted who-pulls-this (`cargo tree -i [-e features]`), and feature-unification tracing (`cargo tree -e features`), each with interpretation and fixes that cross-reference `m11-ecosystem`'s `[workspace.dependencies]` / `[patch]` patterns. Updated the skill description/triggers to cover duplicate-dependency and feature-unification queries.
+
 ## 1.0.0 — 2026-06-07
 
 Forked from [`actionbook/rust-skills`](https://github.com/actionbook/rust-skills) `2.0.9` / plugin `2.1.0` (MIT, ZhangHanDong) and enhanced with production-grade, source-cited Rust patterns.

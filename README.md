@@ -54,6 +54,7 @@ The upstream skills are accurate and well-structured — but, by design, thin: t
 | `domain-cloud-native` | `tonic` gRPC service-to-actor adapter | LakeSail |
 | `domain-ml` | CPU-SIMD detect-once + scalar fallback; hand-written `Default` w/ paper cites | LanceDB |
 | `domain-embedded` | `no_std` kills float math → `libm` | turbopuffer |
+| `rust-deps-visualizer` | duplicate-version + feature-unification diagnosis (`cargo tree -d`/`-i`/`-e features`) | cargo (native, v1.1.0) |
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for the full list and the 5 correctness fixes.
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "best-rust-patterns",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Production-grade Rust skills: actionbook/rust-skills, enhanced with reverse-engineered patterns from real codebases (LanceDB, DataFusion, Zed, Tauri, LakeSail, turbopuffer, Codex, Conductor).",
   "owner": {
     "name": "LeventySeven",

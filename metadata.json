@@ -1,6 +1,6 @@
 {
   "name": "best-rust-patterns",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Production-grade Rust skills — actionbook/rust-skills enhanced with source-cited patterns reverse-engineered from real Rust codebases.",
   "author": "LeventySeven",
   "license": "MIT",
@@ -21,9 +21,9 @@
     "lsp_skills": 6,
     "experimental_skills": 1,
     "unsafe_rules": 47,
-    "enhancements_applied": 34,
-    "skills_enhanced": 18,
-    "correctness_fixes": 4
+    "enhancements_applied": 35,
+    "skills_enhanced": 19,
+    "correctness_fixes": 5
   },
   "enhancements": {
     "method": "Patterns reverse-engineered from production Rust source, mapped to skill gaps, applied as additive source-cited inserts, then adversarially verified against the cited source.",
@@ -48,7 +48,8 @@
       "domain-cli": ["orphan-free child spawn: two-guard discipline (Codex)", "SharedChild kill-while-reading (Tauri)"],
       "domain-cloud-native": ["tonic gRPC service-to-actor adapter (LakeSail)"],
       "domain-ml": ["CPU-SIMD detect-once + mandatory scalar fallback (LanceDB)", "hand-written Default with per-param paper cites (LanceDB)"],
-      "domain-embedded": ["no_std drops transcendental float math -> libm (turbopuffer)"]
+      "domain-embedded": ["no_std drops transcendental float math -> libm (turbopuffer)"],
+      "rust-deps-visualizer": ["duplicate-version + feature-unification diagnosis via cargo tree -d / -i / -e features (cargo-native; cross-refs m11-ecosystem)"]
     },
     "correctness_fixes": [
       "m01-ownership: corrected PhantomData variance table (covariant/invariant/contravariant) — upstream teardown had it wrong on 3/5 rows",
