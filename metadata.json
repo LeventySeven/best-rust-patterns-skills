@@ -1,0 +1,66 @@
+{
+  "name": "best-rust-patterns",
+  "version": "1.0.0",
+  "description": "Production-grade Rust skills — actionbook/rust-skills enhanced with source-cited patterns reverse-engineered from real Rust codebases.",
+  "author": "LeventySeven",
+  "license": "MIT",
+  "repository": "https://github.com/LeventySeven/best-rust-patterns-skills",
+  "upstream": {
+    "name": "rust-skills",
+    "author": "ZhangHanDong",
+    "repository": "https://github.com/actionbook/rust-skills",
+    "version": "2.0.9",
+    "license": "MIT"
+  },
+  "stats": {
+    "total_skills": 38,
+    "meta_skills": 14,
+    "domain_skills": 7,
+    "core_support_skills": 4,
+    "utility_skills": 6,
+    "lsp_skills": 6,
+    "experimental_skills": 1,
+    "unsafe_rules": 47,
+    "enhancements_applied": 34,
+    "skills_enhanced": 18,
+    "correctness_fixes": 4
+  },
+  "enhancements": {
+    "method": "Patterns reverse-engineered from production Rust source, mapped to skill gaps, applied as additive source-cited inserts, then adversarially verified against the cited source.",
+    "source_codebases": [
+      "LanceDB", "DataFusion", "Zed (gpui)", "Tauri", "LakeSail", "turbopuffer (tantivy/hnsw_rs)", "OpenAI Codex", "Conductor"
+    ],
+    "by_skill": {
+      "m01-ownership": ["PhantomData variance marker table (Zed gpui Entity<T>)"],
+      "m02-resource": ["Rc::new_cyclic construction-order (Zed)", "Weak::upgrade() fallibility (Codex)"],
+      "m03-mutability": ["mem::take / mem::swap to dodge borrow conflicts (Zed/LanceDB)", "UnsafeCell hot-path escape hatch (LanceDB)"],
+      "m04-zero-cost": ["GAT + dynamic() escape hatch dissolving static-vs-dyn dichotomy (LanceDB)"],
+      "m05-type-driven": ["#[serde(try_from)] validation-on-deserialize (Codex)", "exhaustive-match evolution safety (DataFusion)"],
+      "m06-error-handling": ["workspace clippy deny-unwrap/panic (LakeSail)", "Arc<io::Error> to derive Clone (turbopuffer)", "context! macro w/ file!()/line!() on a typed enum (DataFusion)"],
+      "m07-concurrency": ["RAII task-abort-on-Drop (Conductor)", "actor own-state-no-lock pattern (LakeSail)"],
+      "m09-domain": ["serde-boundary value-object validation (Codex)"],
+      "m10-performance": ["mimalloc global-allocator swap (LakeSail)", "target-cpu RUSTFLAGS as SIMD precondition (turbopuffer)", "cheap O(1) pre-filter before expensive compare (Zed)"],
+      "m11-ecosystem": ["[workspace.dependencies] version dedup (Zed)", "zero-dep base crate for compile cost (LakeSail)"],
+      "m12-lifecycle": ["async RAII guard = JoinHandle abort-on-drop (Conductor)", "tokio OnceCell::get_or_try_init (LakeSail)"],
+      "m13-domain-error": ["x-should-retry server-driven retry override (turbopuffer)", "discount-only jitter vs thundering herd (turbopuffer)"],
+      "m15-anti-pattern": ["mem::take for move-out-of-&mut self (Zed)", "best lock is no lock — actor alternative (LakeSail)"],
+      "domain-web": ["reqwest connection-pool/keep-alive knobs (turbopuffer)", "honor x-should-retry on outbound calls (turbopuffer)"],
+      "domain-cli": ["orphan-free child spawn: two-guard discipline (Codex)", "SharedChild kill-while-reading (Tauri)"],
+      "domain-cloud-native": ["tonic gRPC service-to-actor adapter (LakeSail)"],
+      "domain-ml": ["CPU-SIMD detect-once + mandatory scalar fallback (LanceDB)", "hand-written Default with per-param paper cites (LanceDB)"],
+      "domain-embedded": ["no_std drops transcendental float math -> libm (turbopuffer)"]
+    },
+    "correctness_fixes": [
+      "m01-ownership: corrected PhantomData variance table (covariant/invariant/contravariant) — upstream teardown had it wrong on 3/5 rows",
+      "m07-concurrency: corrected LakeSail actor field names; marked illustrative type params",
+      "m12-lifecycle: removed two assertions made beyond the cited source",
+      "domain-cli: separated verbatim source comments from illustrative skeleton",
+      "rust-daily: removed nonexistent agent-browser --limit flag from 6 commands"
+    ]
+  },
+  "compatibility": {
+    "claude_code_min_version": "1.0.0",
+    "lsp_skills_require": "rust-analyzer-lsp plugin + rust-analyzer binary"
+  },
+  "last_updated": "2026-06-07"
+}

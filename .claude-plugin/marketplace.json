@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "best-rust-patterns",
+  "version": "1.0.0",
+  "description": "Production-grade Rust skills: actionbook/rust-skills, enhanced with reverse-engineered patterns from real codebases (LanceDB, DataFusion, Zed, Tauri, LakeSail, turbopuffer, Codex, Conductor).",
+  "owner": {
+    "name": "LeventySeven",
+    "url": "https://github.com/LeventySeven"
+  },
+  "plugins": [
+    {
+      "name": "best-rust-patterns",
+      "description": "38 Rust skills (ownership, concurrency, error handling, unsafe, LSP code intelligence, domain patterns) augmented with 34 source-cited production patterns extracted from real Rust codebases and adversarially verified against source.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
